@@ -14,15 +14,19 @@ void DLinkedList<K, V>::insertKeyValuePair(K key, V value)
 {
     if (this->hash_map.find(key) != this->hash_map.end())
     {
+        cout << "\n**** Updating value for key ****" << endl;
         Node <K, V>* tempNode = this->hash_map[key];
         tempNode->value = value;
-        this->updateLeastRecently(tempNode);        
+        this->updateLeastRecently(tempNode);      
+        tempNode->showKeyValue();
     }
     else
     {
+        cout << "\n**** Inserting key value ****" << endl;
         Node <K, V>* newNode = new Node<K, V> (key, value);
         newNode->timestamp = this->initial_time;
         this->hash_map[key] = newNode;
+        newNode->showKeyValue();
         if (this->head)
         {
             if (this->head == this->tail)
@@ -37,7 +41,7 @@ void DLinkedList<K, V>::insertKeyValuePair(K key, V value)
             {
                 if (this->maxSize == this->elements)
                 {
-                    cout << "********Eviction*********" << endl;
+                    cout << "\n******* Eviction ********" << endl;
                     Node <K, V>* tempNode = this->head;
                     this->head = this->head->next;
                     this->head->prev = this->tail;
@@ -66,6 +70,8 @@ void DLinkedList<K, V>::insertKeyValuePair(K key, V value)
 template <typename K, typename V>
 K DLinkedList<K, V>::getMostRecentKey()
 {
+    cout << "\n****** Most recent key ******" << endl;
+    this->tail->showKeyValue();
     return this->tail->key;
 }
 
@@ -92,10 +98,12 @@ void DLinkedList<K, V>::updateLeastRecently(Node<K, V>* tempNode)
 template <typename K, typename V>
 V DLinkedList<K, V>::getValueFromKey(K key)
 {
+    cout << "\n**** Get value from key ****" << endl;
     if (hash_map.find(key) != hash_map.end())
     {
         Node <K, V>* tempNode = hash_map[key];
         this->updateLeastRecently(tempNode);
+        tempNode->showKeyValue();
         return tempNode->value;
     }
     else
@@ -108,6 +116,7 @@ V DLinkedList<K, V>::getValueFromKey(K key)
 template <typename K, typename V>
 void DLinkedList<K, V>::showAllKeyValuePairs()
 {
+    cout << "======== Showing all elements =======" << endl;
     Node <K,V> * tempNode = this->head;
     for (int i = 0; i < this->maxSize; i++)
     {

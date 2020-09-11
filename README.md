@@ -1,3 +1,7 @@
-# EDA 2020-2
+# EDA 2020-2 UTEC
 
-Roosevelt Jhans Ubaldo Chavez
+**Author:** Roosevelt Jhans Ubaldo Chavez
+
+## Index
+- [LRU Cache](LRUCache)
+

@@ -6,12 +6,12 @@ int main()
     myDlinkedList.insertKeyValuePair('b', 2);
     myDlinkedList.insertKeyValuePair('a', 1);
     myDlinkedList.insertKeyValuePair('c', 3);
-    cout << myDlinkedList.getMostRecentKey() << endl;
-    cout << myDlinkedList.getValueFromKey('a') << endl;
-    cout << myDlinkedList.getMostRecentKey() << endl;
+    myDlinkedList.getMostRecentKey();
+    myDlinkedList.getValueFromKey('a');
+    myDlinkedList.getMostRecentKey();
     myDlinkedList.insertKeyValuePair('d', 4);
-    cout << myDlinkedList.getValueFromKey('b') << endl;
+    myDlinkedList.getValueFromKey('b');
     myDlinkedList.insertKeyValuePair('a', 5);
-    cout << myDlinkedList.getValueFromKey('a') << endl;
+    myDlinkedList.getValueFromKey('a');
     myDlinkedList.showAllKeyValuePairs();
 }
