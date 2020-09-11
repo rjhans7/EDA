@@ -5,7 +5,7 @@
 using namespace std;
 
 template <typename K, typename V>
-class DLinkedList;
+class LRUCache;
 
 template <typename K, typename V>
 class Node 
@@ -22,5 +22,5 @@ public:
     void showKeyValue();
     ~Node();
 
-    friend class DLinkedList <K, V>;
+    friend class LRUCache <K, V>;
 };

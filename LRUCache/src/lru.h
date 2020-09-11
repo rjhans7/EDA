@@ -1,7 +1,8 @@
 #include "node.cpp"
+#include <optional>
 
 template<typename K, typename V>
-class DLinkedList 
+class LRUCache 
 {
     Node<K, V>* head;
     Node<K, V>* tail;
@@ -10,9 +11,9 @@ class DLinkedList
     void updateLeastRecently(Node<K, V>* tempNode);
 
     public:
-        explicit DLinkedList(long maxSize);
+        explicit LRUCache(long maxSize);
         void insertKeyValuePair(K key, V value);
-        V getValueFromKey(K key);
+        optional <V> getValueFromKey(K key);
         K getMostRecentKey();
         void showAllKeyValuePairs();
 };

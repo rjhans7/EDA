@@ -1,7 +1,7 @@
 #include "lru.h"
 
 template <typename K, typename V>
-DLinkedList<K, V>::DLinkedList(long maxSize)
+LRUCache<K, V>::LRUCache(long maxSize)
 {
     this->maxSize = maxSize;
     this->head = this->tail = nullptr;
@@ -10,7 +10,7 @@ DLinkedList<K, V>::DLinkedList(long maxSize)
 }
 
 template <typename K, typename V>
-void DLinkedList<K, V>::insertKeyValuePair(K key, V value)
+void LRUCache<K, V>::insertKeyValuePair(K key, V value)
 {
     if (this->hash_map.find(key) != this->hash_map.end())
     {
@@ -68,7 +68,7 @@ void DLinkedList<K, V>::insertKeyValuePair(K key, V value)
 }
 
 template <typename K, typename V>
-K DLinkedList<K, V>::getMostRecentKey()
+K LRUCache<K, V>::getMostRecentKey()
 {
     cout << "\n****** Most recent key ******" << endl;
     this->tail->showKeyValue();
@@ -76,7 +76,7 @@ K DLinkedList<K, V>::getMostRecentKey()
 }
 
 template <typename K, typename V>
-void DLinkedList<K, V>::updateLeastRecently(Node<K, V>* tempNode)
+void LRUCache<K, V>::updateLeastRecently(Node<K, V>* tempNode)
 {
     if (tempNode != this->tail)
     {
@@ -96,7 +96,7 @@ void DLinkedList<K, V>::updateLeastRecently(Node<K, V>* tempNode)
 }
 
 template <typename K, typename V>
-V DLinkedList<K, V>::getValueFromKey(K key)
+optional <V> LRUCache<K, V>::getValueFromKey(K key)
 {
     cout << "\n**** Get value from key ****" << endl;
     if (hash_map.find(key) != hash_map.end())
@@ -109,12 +109,12 @@ V DLinkedList<K, V>::getValueFromKey(K key)
     else
     {
         cout << "None" << endl;
-        return {};
+        return nullopt;
     }
 }
 
 template <typename K, typename V>
-void DLinkedList<K, V>::showAllKeyValuePairs()
+void LRUCache<K, V>::showAllKeyValuePairs()
 {
     cout << "======== Showing all elements =======" << endl;
     Node <K,V> * tempNode = this->head;
